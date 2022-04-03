@@ -6,7 +6,7 @@ interface Member {
 interface Dinner {
     member: Member[];
     shuffle: {
-        (array: Array<Member>): object;
+        (array: Array<Member>): Array<Member>;
     };
     organize: {
         (array: Array<Member>): void;
