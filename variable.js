@@ -1,24 +1,29 @@
-// var name = '이우진';
-// var name = '바보';
+// var variable1 = "var variable";
+// var variable1 = "new var variable";
 
-// let name2 = '박진수';
-// let name3 = '김희빈';
+// console.log("var : ", variable1);
 
-// console.log(name);
-// console.log(name2);
+// let variable1 = "var variable";
+// let variable1 = "new var variable";
 
-// if (true) {
-//     var x = 'var variable';
-// }
-// console.log(x);
+// console.log("var : ", variable1);
 
-function foo () {
-    if (true) {
-        var name = '이우진';
-        console.log('if - block -', name);
-    }
-    console.log('function block - ', name);
-}
-foo()
-// console.log('global - ', name);
+// const variable1 = "var variable";
+// const variable1 = "new var variable";
 
+// console.log("var : ", variable1);
+
+// var variable1 = "var variable";
+// variable1 = "new variable";
+
+// console.log("var: ", variable1);
+
+// let variable1 = "var variable";
+// variable1 = "new variable";
+
+// console.log("var: ", variable1);
+
+const variable1 = "var variable";
+variable1 = "new variable";
+
+console.log("var: ", variable1);

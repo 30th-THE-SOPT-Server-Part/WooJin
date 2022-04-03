@@ -82,7 +82,7 @@
 // };
 // boy.showName();
 
-days = [1, 2, 3, 4, 5];
-days.unshift(-1, 0);
-days.shift();
-console.log(days);
+// days = [1, 2, 3, 4, 5];
+// days.unshift(-1, 0);
+// days.shift();
+// console.log(days);
