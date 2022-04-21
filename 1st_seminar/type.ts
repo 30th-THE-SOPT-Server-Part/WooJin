@@ -83,3 +83,5 @@ const unknown: any = {
 };
 
 console.log(unknown);
+
+console.log(typeof myName)
