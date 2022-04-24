@@ -10,10 +10,10 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
     res.send('Hi! This is my first express server. My name is Woojin.');
 });
 
-app.listen('8000', () => {
+app.listen('8080', () => {
     console.log(`
     #############################################x
-        🛡️ Server listening on port: 8000 🛡️
+        🛡️ Server listening on port: 8080 🛡️
     #############################################    
     `)
 })
