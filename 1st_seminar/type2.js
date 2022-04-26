@@ -21,4 +21,4 @@ let arr = ["hi", 1, "I'm", true];
 
 // for (const x of newNumArr) {
 //     console.log(x);
-}
+//}
