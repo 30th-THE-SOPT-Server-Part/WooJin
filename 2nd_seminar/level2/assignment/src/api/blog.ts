@@ -1,12 +1,23 @@
-import { Request, Response, Router } from 'express';
+import { Request, Response } from "express";
 
-const router: Router = Router();
+const selectPost = async (req: Request, res: Response) => {
+    const param = req.params;
 
-router.get('/', (req: Request, res: Response) => {
     return res.status(200).json({
         status: 200,
-        message: '포스팅 생성 성공'
+        message: "포스팅 조회 성공",
+        posting_number: param.blogId
     });
-});
+};
 
-module.exports = router;
+const likePost = async (req: Request, res: Response) => {
+    const param = req.params;
+
+    return res.status(200).json({
+        status:200,
+        message: "좋아요 성공",
+        posting_number: param.blogId
+    });
+};
+
+export { selectPost, likePost };

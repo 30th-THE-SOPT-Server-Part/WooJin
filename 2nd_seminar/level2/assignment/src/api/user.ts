@@ -1,12 +1,14 @@
-import { Request, Response, Router } from 'express';
+import { Request, Response } from "express";
+import { request } from "http";
 
-const router: Router = Router();
+const selectUser = async (req: Request, res: Response) => {
+    const param = req.params
 
-router.get('/', (req: Request, res: Response) => {
     return res.status(200).json({
         status: 200,
-        message: '유저 조회 성공'
+        message: "유저 조회 성공",
+        data: param
     });
-});
+};
 
-module.exports = router;
+export default selectUser;
