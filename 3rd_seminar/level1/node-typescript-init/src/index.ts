@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
+import config from "./config";
 const app = express();
 import connectDB from "./loaders/db";
 import routes from './routes';
@@ -17,6 +18,7 @@ interface ErrorType {
   status: number;
 }
 
+// 모든 에러
 app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
 
   res.locals.message = err.message;
@@ -28,7 +30,7 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
 });
 
 app
-  .listen(process.env.PORT, () => {
+  .listen(config.port, () => {
     console.log(`
     ################################################
           🛡️  Server listening on port 🛡️
