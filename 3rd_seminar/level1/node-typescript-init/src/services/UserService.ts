@@ -1,6 +1,7 @@
 import { PostBaseResponseDto } from "../interfaces/common/PostBaseResponseDto";
 import { UserCreateDto } from "../interfaces/user/UserCreateDto";
 import { UserResponseDto } from "../interfaces/user/UserResponseDto";
+import { UserUpdateDto } from "../interfaces/user/UserUpdateDto";
 import User from "../models/User";
 
 const createUser = async (userCreateDto: UserCreateDto): Promise<PostBaseResponseDto> => {
@@ -29,6 +30,46 @@ const createUser = async (userCreateDto: UserCreateDto): Promise<PostBaseRespons
     }
 }
 
+const updateUser = async (userId: string, userUpdateDto: UserUpdateDto): Promise<void> => {
+    try {
+        // findByIdAndUpdate
+        await User.findByIdAndUpdate(userId, userUpdateDto);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+const findUserById = async (userId: string): Promise<UserResponseDto | null> => {
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return null;
+        }
+
+        return user;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+const deleteUser = async (userId: string): Promise<UserResponseDto | null> => {
+    try {
+        const user = await User.findByIdAndDelete(userId);
+        if (!user) {
+            return null;
+        }
+        return user;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 export default {
     createUser,
+    updateUser,
+    findUserById,
+    deleteUser,
 }
