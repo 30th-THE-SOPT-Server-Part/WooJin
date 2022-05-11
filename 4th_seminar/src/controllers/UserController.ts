@@ -5,6 +5,7 @@ import message from "../modules/responseMessage";
 import util from "../modules/util";
 import { UserService } from "../services";
 import { UserUpdateDto } from "../interfaces/user/UserUpdateDto";
+import { validationResult } from "express-validator";
 
 /**
  * @route POST /user
@@ -12,6 +13,12 @@ import { UserUpdateDto } from "../interfaces/user/UserUpdateDto";
  * @access Public
  */
 const createUser = async (req: Request, res: Response): Promise<void | Response> => {
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+        console.log(error);
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, error.array()[0].msg));
+    }
+    
     const userCreateDto: UserCreateDto = req.body;
 
     try {
@@ -36,7 +43,13 @@ const createUser = async (req: Request, res: Response): Promise<void | Response>
  * @desc Update User
  * @access Public
  */
-const updateUser = async (req: Request, res: Response): Promise<void> => {
+const updateUser = async (req: Request, res: Response): Promise<void | Response> => {
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+        console.log(error);
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, error.array()[0].msg));
+    }
+        
     const userUpdateDto: UserUpdateDto = req.body;
     const { userId } = req.params;
 
