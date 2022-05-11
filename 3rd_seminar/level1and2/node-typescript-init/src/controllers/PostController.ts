@@ -24,6 +24,9 @@ const updatePost = async (req: Request, res: Response): Promise<void> => {
 
     try {
         const data = await PostService.updatePost(postId, postUpdateDto);
+        if (data === null) {
+            res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.BAD_REQUEST));
+        };
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.UPDATE_POST_SUCCESS, data));
     } catch (error) {
         res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
@@ -35,6 +38,9 @@ const findPostById = async (req: Request, res: Response): Promise<void> => {
 
     try {
         const data = await PostService.findPostById(postId);
+        if (data === null) {
+            res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.BAD_REQUEST));
+        };        
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.READ_POST_SUCCESS, data));
     } catch (error) {
         res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
@@ -46,6 +52,9 @@ const deletePost = async (req: Request, res: Response): Promise<void> => {
 
     try {
         const data = await PostService.deletePost(postId);
+        if (data === null) {
+            res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.BAD_REQUEST));
+        };        
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.DELETE_POST_SUCCESS, data));
     } catch (error) {
         res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
