@@ -33,7 +33,7 @@ const createPost = async (postCreateDto: PostCreateDto): Promise<PostBaseRespons
 const updatePost = async (postId: string, postUpdateDto: PostUpdateDto): Promise<PostUpdateDto | null> => {
     try {
         await Post.findByIdAndUpdate(postId, postUpdateDto);
-        const post = await findPostById(postId);
+        const post = await Post.findById(postId);
         if (!post) {
             return null;
         }
