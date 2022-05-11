@@ -46,6 +46,9 @@ const updateMovie = async (req: Request, res: Response): Promise<void | Response
 
     try {
         const data = await MovieService.updateMovie(movieId, movieUpdateDto);
+        if (data === null) {
+            return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.NONEXISTENT_ID));
+        }
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.UPDATE_MOVIE_SUCCESS, data));
     } catch (error) {
         console.log(error);
@@ -59,11 +62,14 @@ const updateMovie = async (req: Request, res: Response): Promise<void | Response
  * @description Read Movie
  * @access Public
  */
- const findMovieById = async (req: Request, res: Response): Promise<void> => {
+ const findMovieById = async (req: Request, res: Response): Promise<void | Response> => {
     const { movieId } = req.params;
 
     try {
         const data = await MovieService.findMovieById(movieId);
+        if (data === null) {
+            return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.NONEXISTENT_ID));
+        }
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.READ_MOVIE_SUCCESS, data));
     } catch (error) {
         console.log(error);
@@ -76,11 +82,14 @@ const updateMovie = async (req: Request, res: Response): Promise<void | Response
  * @description Delete Movie
  * @access Public
  */
- const deleteMovie = async (req: Request, res: Response): Promise<void> => {
+ const deleteMovie = async (req: Request, res: Response): Promise<void | Response> => {
     const { movieId } = req.params;
     
     try {
         const data = await MovieService.deleteMovie(movieId);
+        if (data === null) {
+            return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.NONEXISTENT_ID));
+        }
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.DELETE_MOVIE_SUCCESS, data));
     } catch (error) {
         console.log(error);
