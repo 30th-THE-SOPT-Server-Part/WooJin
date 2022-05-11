@@ -1,4 +1,4 @@
-export interface MovieInfo {
+export interface MovieCreateDto {
     title: string;
     director: string;
     startDate: Date;
