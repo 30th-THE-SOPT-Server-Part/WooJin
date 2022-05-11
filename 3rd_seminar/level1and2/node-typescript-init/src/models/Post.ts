@@ -1,4 +1,3 @@
-import { truncate } from "fs";
 import mongoose from "mongoose";
 import { PostInfo } from "../interfaces/post/PostInfo";
 
